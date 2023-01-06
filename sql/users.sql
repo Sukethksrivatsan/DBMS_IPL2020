@@ -1,0 +1,21 @@
+CREATE USER admin WITH PASSWORD 'admin' CREATEDB;
+
+CREATE USER statistician WITH PASSWORD 'stats' CREATEDB;
+
+CREATE USER finance WITH PASSWORD 'money' CREATEDB;
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA PUBLIC TO ADMIN;
+GRANT SELECT,INSERT,DELETE,UPDATE ON PLAYERS,RECORDS TO statistician;
+GRANT SELECT,INSERT,DELETE,UPDATE ON AUCTION,OWNER,IPL,SPONSORS TO FINANCE ;
+
+CREATE TABLE users (
+	user_id INT NOT NULL,
+	user_name VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL
+);
+
+INSERT INTO users(user_id, user_name, password)
+VALUES
+(1, 'admin', 'admin'),
+(2, 'statistician', 'stats'),
+(3, 'finance', 'money');
